@@ -1,0 +1,52 @@
+body {
+    background-color: rgb(241, 239, 239);
+}
+
+input#new-course-title, input#new-course-title::placeholder {
+    background-color:rgba(0,0,0,0) !important;
+    font-style: italic;
+    font-weight: bolder;
+    color: aliceblue;
+}
+
+.wbdv-course-manager-bar {
+    z-index: 1;
+    width: 100%;
+}
+
+.wbdv-course-list {
+    padding-top: 64px;
+    box-shadow: 0 1px 1px 0  rgb(241, 239, 239), 0 1px 1px 0 rgb(241, 239, 239);
+    /* border: 1px solid gainsboro; */
+    background-color: white;
+}
+
+.wbdv-course-record {
+    background-color: white;
+    border: 1px solid gainsboro;
+    padding: 10px;
+}
+
+.wbdv-course-record .btn {
+    background-color: rgba(0,0,0,0) !important;
+}
+
+.fa-align-justify {
+    color:aliceblue;
+}
+
+#course-list-heading {
+    font-size: large;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 15px;
+    padding-top: 15px;    
+}
+
+
+.wbdv-bottom-right-button{
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+    z-index: 1;
+}
