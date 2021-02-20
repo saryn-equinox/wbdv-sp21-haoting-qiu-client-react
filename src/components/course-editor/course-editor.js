@@ -21,24 +21,24 @@ const CourseEditor = (props) => {
             <div className="collapse navbar-collapse " id="navbar-nav-dropdown">
                 <ul className="nav navbar-nav nav-fill w-100">
                     <li className="nav-item">
-                        <a className="nav-link" href="#" role="button">Builder</a>
+                        <a className="nav-link" role="button">Builder</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" role="button">Pages</a>
+                        <a className="nav-link" role="button">Pages</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" role="button">Theme</a>
+                        <a className="nav-link" role="button">Theme</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" role="button">Store</a>
+                        <a className="nav-link" role="button">Store</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" role="button">Apps</a>
+                        <a className="nav-link" role="button">Apps</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" role="button">Settings</a>
+                        <a className="nav-link" role="button">Settings</a>
                     </li>
-                    <a className="nav-item nav-link" href="#" role="button">
+                    <a className="nav-item nav-link" role="button">
                         <i className="fas fa-plus"></i>
                     </a>
             </ul>
