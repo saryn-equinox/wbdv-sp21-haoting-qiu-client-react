@@ -16,8 +16,7 @@ const CourseManager = (props) => {
     useEffect(() => {
         courseService.findAllCourses()
             .then(data => {
-                setCourses(data.reverse());
-                console.log(courses);
+                setCourses([...data.reverse()]);
         });
     }, []);
 
@@ -32,8 +31,9 @@ const CourseManager = (props) => {
 
     const createCourse = () => {
         let course = {
-            "title" : newCourseTitle, 
-            "lastModified" : date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate()
+            title : newCourseTitle, 
+            lastModified : date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate(),
+            owner : "New Owner"
         }
         courseService.createCourse(course)
             .then(data => {
@@ -42,6 +42,15 @@ const CourseManager = (props) => {
                 temp.splice(0,0, data);
                 setCourses(temp);
             });
+    }
+
+    const updateCourse = (course) => {
+        courseService.updateCourse(course._id, course)
+        .then(status => {
+            let temp = courses.slice();
+            temp = temp.map(c => c._id === course._id ? course : c);
+            setCourses(temp);
+        });
     }
 
     return (
@@ -82,10 +91,10 @@ const CourseManager = (props) => {
 
             <Switch>
                 <Route path="/courses/grid">
-                    <CourseGrid courses={courses} deleteCourse={deleteCourse} />
+                    <CourseGrid courses={courses} deleteCourse={deleteCourse} updateCourse={updateCourse} />
                 </Route>
                 <Route path="/courses/table">
-                    <CourseTable courses={courses} deleteCourse={deleteCourse} />
+                    <CourseTable courses={courses} deleteCourse={deleteCourse} updateCourse={updateCourse} />
                 </Route>
             </Switch>
         </div>

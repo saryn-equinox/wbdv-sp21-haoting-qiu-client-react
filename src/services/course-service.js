@@ -31,7 +31,7 @@ class CourseService {
      * Fetch all courses from the service
      */
     findAllCourses() {
-        return  fetch(this.url)
+        return fetch(this.url)
           .then(res => res.json())
     }
 

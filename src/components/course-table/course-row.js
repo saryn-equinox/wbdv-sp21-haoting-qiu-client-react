@@ -3,18 +3,17 @@ import {Link} from "react-router-dom";
 import { useState } from "react";
 
 const CourseRow = (props) => {
-
-    const [editing, setEditing] = useState(false);
-    console.log(editing); // 一直是true
+    
     const [courseTitle, setCourseTitle] = useState(props.course.title);
     const [owner, setOwner] = useState(props.course.owner);
     const [lastModified, setlastModified] = useState(props.course.lastModified);
-    
+    const [isEditing, setEditing] = useState(false);
+
     return (
          <tr> 
             <td>
                 {
-                    !editing &&
+                    !isEditing &&
                     
                         <Link to="/courses/editor">
                             <i className="fas fa-file"></i>
@@ -23,7 +22,7 @@ const CourseRow = (props) => {
                     
                 } 
                 {
-                    editing &&
+                    isEditing &&
                     <input
                         onChange={(event) => setCourseTitle(event.target.value)}
                         value={courseTitle}
@@ -32,10 +31,10 @@ const CourseRow = (props) => {
             </td>
             <td className ="d-none d-md-table-cell">
                 {
-                    !editing && props.course.owner
+                    !isEditing && props.course.owner
                 }
                 {
-                    editing &&
+                    isEditing &&
                     <input
                         onChange={(event) => setOwner(event.target.value)}
                         value={owner}
@@ -44,10 +43,10 @@ const CourseRow = (props) => {
             </td>
             <td className ="d-none d-lg-table-cell">
             {
-                !editing && props.course.lastModified
+                !isEditing && props.course.lastModified
             }
             {
-                editing &&
+                isEditing &&
                 <input
                     onChange={(event) => setlastModified(event.target.value)}
                     value={lastModified}
@@ -56,23 +55,36 @@ const CourseRow = (props) => {
             </td>
 
             <td>
+            
                 {
-                    !editing &&
-                    <button className="btn" onClick={setEditing(true)}>
+                    !isEditing &&
+                    <button className="btn" onClick={() => setEditing(true)}>
                         <i className="fas fa-edit"></i>
                     </button>
                 }
                 {
-                    editing &&
-                    <button className="btn">
+                    isEditing &&
+                    <button className="btn" onClick={() => {
+                        const newCourse = {
+                            ...props.course,
+                            title: courseTitle,
+                            lastModified : lastModified,
+                            owner: owner
+                        }
+                        props.updateCourse(newCourse);
+                        setEditing(false);
+                        // setCourseTitle(newCourse.title);
+                        // setOwner(newCourse.owner);
+                        // setlastModified(newCourse.lastModified);
+                    }} >
                         <i class="fas fa-check"></i>
                     </button>
                 }
                 {
-                    editing &&
+                    isEditing &&
                     <button className="btn" onClick={() => {
                         props.deleteCourse(props.course._id);
-                        setEditing(false)
+                        setEditing(false);
                     }}>
                         <i className="fas fa-times"></i>
                     </button>
