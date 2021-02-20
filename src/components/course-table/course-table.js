@@ -1,15 +1,16 @@
 import React from 'react';
-import CourseRow from "./course-row"
+import CourseRow from "./course-row";
+import {Link} from "react-router-dom";
 
 class CourseTable extends React.Component {
 
     constructor(props) {
         super(props)
         console.log(props)
-      }
+    }
 
     render () {
-        return (<div className="container-fulid wbdv-course-list">
+        return (<div className="wbdv-course-list">
             <table className="table table-hover">
             <thead>
                 <tr>
@@ -23,24 +24,18 @@ class CourseTable extends React.Component {
                         <button type="button" className="btn mx-1 btn-light">
                             <i className="fas fa-sort-alpha-down"></i>
                         </button>
-                        <button type="button" className="btn mx-1 btn-light">
-                            <i class="fas fa-th"></i>
-                        </button>
+                        <Link to="/courses/grid">
+                            <button type="button" className="btn mx-1 btn-light">
+                                <i class="fas fa-th"></i>
+                            </button>
+                        </Link>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                    <CourseRow />
-                    <CourseRow />
-                    <CourseRow />
-                    <CourseRow />
-                    <CourseRow />
-                    <CourseRow />
-                    <CourseRow />
-                    <CourseRow />
-                    <CourseRow />
-                    <CourseRow />
-                    <CourseRow />
+                    {
+                        this.props.courses.map(c => <CourseRow key={c._id} course={c} deleteCourse={this.props.deleteCourse} />)
+                    }
             </tbody>
             </table>
         </div>)

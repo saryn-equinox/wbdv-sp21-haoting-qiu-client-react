@@ -57,7 +57,7 @@ class CourseService {
     deleteCourse(id) {
         return fetch(`${this.url}/${id}`, {
             method : "DELETE"
-        })
+        }).then(res => res.json())
     }
 
 }
