@@ -2,6 +2,7 @@ import React from 'react'
 import CourseCard from "./course-card";
 import {Link} from "react-router-dom";
 
+
 const CourseGrid = (props) => {
 
   return (<div className="container-fluid wbdv-course-grid">
@@ -28,7 +29,10 @@ const CourseGrid = (props) => {
          </div>
         <div className="row">
             {
-                props.courses.map(c => <CourseCard key={c._id} course={c} />)
+                props.courses.map(c => <CourseCard key={c._id} 
+                                                    course={c}
+                                                    deleteCourse={props.deleteCourse}
+                                                    updateCourse={props.updateCourse} />)
             }
         </div>
   </div>)

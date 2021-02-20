@@ -77,7 +77,9 @@ const CourseRow = (props) => {
                         // setOwner(newCourse.owner);
                         // setlastModified(newCourse.lastModified);
                     }} >
-                        <i class="fas fa-check"></i>
+                        <i class="fas fa-check" style={{
+                            color: 'green'
+                        }}></i>
                     </button>
                 }
                 {
@@ -86,7 +88,9 @@ const CourseRow = (props) => {
                         props.deleteCourse(props.course._id);
                         setEditing(false);
                     }}>
-                        <i className="fas fa-times"></i>
+                        <i className="fas fa-times" style={{
+                            color: 'red'
+                        }}></i>
                     </button>
                 }
             </td>
