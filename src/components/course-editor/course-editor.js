@@ -1,17 +1,18 @@
 import React from 'react';
 import "./course-editor.style.client.css";
-import {useHistory, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const CourseEditor = (props) => {
-    let history = useHistory();
-
+    
     return(<div>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark sticky-top flex-fill">
             <span className="navbar-brand">
-                    <button className="btn-dark btn" onClick={() => history.goBack()}>
+                    <Link to={`/courses/${props.match.params.layout}`}>
+                    <button className="btn-dark btn">
                         <i className="fas fa-times"></i>
                     </button>
-                CS5610 - WebDev
+                    </Link>
+                {`Yo`}
             </span>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbar-nav-dropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -124,5 +125,14 @@ const CourseEditor = (props) => {
         </div>
     </div>)
 }
+
+// CourseEditor.defaultProps = {
+//     course: {
+//         title : "Unkown",
+//         owner : "Haoting Qiu",
+//         lastModified : "01/01/2021"
+//     }
+// }
+
 
 export default CourseEditor

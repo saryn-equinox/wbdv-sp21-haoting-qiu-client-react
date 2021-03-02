@@ -55,8 +55,8 @@ const CourseManager = (props) => {
 
     return (
         <div>
-            <Link to="/courses/table" ></Link>
-            <Link to="/courses/grid" ></Link>
+            {/* <Link to="/courses/table" ></Link>
+            <Link to="/courses/grid" ></Link> */}
 
             <nav className="navbar navbar-dark bg-primary justify-content-start position-fixed wbdv-course-manager-bar">
                 <span className="navbar-brand w-auto">

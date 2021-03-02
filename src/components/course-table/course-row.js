@@ -15,7 +15,7 @@ const CourseRow = (props) => {
                 {
                     !isEditing &&
                     
-                        <Link to="/courses/editor">
+                        <Link to={`/courses/table/edit/${props.course._id}`}>
                             <i className="fas fa-file"></i>
                             {courseTitle}
                         </Link>
