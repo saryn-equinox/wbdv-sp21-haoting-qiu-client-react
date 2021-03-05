@@ -80,13 +80,16 @@ const dtpm = (dispatch) => {
             })
         },
         createModule : (courseId) => {
-            ModuleService.createModule(courseId, {title : "New Module"})
-            .then(data => {
-                dispatch({
-                    type : "CREATE_MODULE",
-                    module : data
+            if (courseId !== "undefined" && typeof courseId !== "undefined") {
+                ModuleService.createModule(courseId, {title : "New Module"})
+                .then(data => {
+                    dispatch({
+                        type : "CREATE_MODULE",
+                        module : data
+                    })
                 })
-            })
+            } else
+            alert("Please select a course");
         }
     }
 }
