@@ -4,6 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import {combineReducers, createStore} from "redux";
 import ModuleList from "./module-list";
 import LessonTab from "./lesson-tabs";
+import TopicPill from "./topic-pills";
 import CourseService from "../../services/course-service";
 import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
@@ -87,6 +88,9 @@ const CourseEditor = (props) => {
             <div className="col-8 mx-2">
                 <div className="row d-inline wbdv-course-lessons">
                     <LessonTab />
+                </div>
+                <div>
+                    <TopicPill />
                 </div>
                 {/* <div className="row d-inline wbdv-course-topics">
                     <ul className="nav nav-fill nav-pills">

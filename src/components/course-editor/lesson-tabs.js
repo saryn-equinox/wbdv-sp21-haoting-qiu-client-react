@@ -2,7 +2,7 @@ import React, {useEffect}from "react";
 import {connect} from "react-redux";
 import {Link, useParams} from "react-router-dom";
 import LessonService from "../../services/lesson-service";
-import EditablItem from "../editable-item";
+import EditableItem from "../editable-item";
 
 const LessonTab = ({
     lessons = [],
@@ -29,7 +29,7 @@ const LessonTab = ({
                             key={l._id}
                             to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${l._id}`}
                             >
-                            <EditablItem
+                            <EditableItem
                                 to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${l._id}`}
                                 item={l}
                                 updateItem={updateLesson}
@@ -40,7 +40,7 @@ const LessonTab = ({
             )
         }
         <button
-                className="btn btn-outline-dark justify-content-end"
+                className="btn btn-outline-dark "
                 type="button"
                 onClick = {() => {createLesson(moduleId)}}>
             <i className="fas fa-plus"></i>
@@ -85,13 +85,16 @@ const dtpm = (dispatch) => {
             });
         },
         createLesson : (moduleId) => {
-            LessonService.createLesson(moduleId, {title : "New Lesson"})
-            .then(data => {
-                dispatch({
-                    type : "CREATE_LESSON",
-                    lesson : data
+            if (moduleId !== "undefined" && typeof moduleId !== "undefined") {
+                LessonService.createLesson(moduleId, {title : "New Lesson"})
+                .then(data => {
+                    dispatch({
+                        type : "CREATE_LESSON",
+                        lesson : data
+                    });
                 });
-            });
+            } else
+                alert("Please select a module");
         }
     }
 }
