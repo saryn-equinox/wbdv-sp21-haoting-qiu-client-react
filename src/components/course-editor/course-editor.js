@@ -89,7 +89,7 @@ const CourseEditor = (props) => {
                 <div className="row d-inline wbdv-course-lessons">
                     <LessonTab />
                 </div>
-                <div>
+                <div className="row d-inline wbdv-course-topics">
                     <TopicPill />
                 </div>
                 {/* <div className="row d-inline wbdv-course-topics">
