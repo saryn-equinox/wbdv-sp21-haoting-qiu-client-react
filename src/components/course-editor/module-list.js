@@ -5,17 +5,15 @@ import ModuleService from "../../services/module-service";
 import EditableItem from "../editable-item";
 
 const ModuleList = ({
-    from,
-    courseId,
     modules = [],
     findModulesForCourse,
     updateModule,
     deleteModule,
     createModule
 }) => {
+    const {layout, courseId, moduleId} = useParams();
     useEffect(() => {
-        findModulesForCourse(courseId) 
-        console.log(modules)
+        findModulesForCourse(courseId);
     }, []);
 
     return (
@@ -26,9 +24,9 @@ const ModuleList = ({
                         data-toggle="list" 
                         role="tab"
                         key={m._id}
-                        to={`${from}/modules/${m._id}`}>
+                        to={`/courses/${layout}/edit/${courseId}/modules/${m._id}`}>
                         <EditableItem 
-                            to={`${from}/modules/${m._id}`}
+                            to={`/courses/${layout}/edit/${courseId}/modules/${m._id}`}
                             item={m}
                             updateItem={updateModule}
                             deleteItem={deleteModule}

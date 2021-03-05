@@ -2,17 +2,31 @@
     height: 100%;
 }
 
+.wbdv-course-lessons a {
+    background-color: #8f8c8c  !important;
+    border: 1px solid gainsboro;
+    /* margin-left: 3%;
+    margin-right: 3%; */
+    color: whitesmoke;
+}
+
+.wbdv-course-lessons .nav-link.active {
+    background-color: cornflowerblue !important;
+}
+
 .wbdv-course-topics a {
     background-color: #8f8c8c  !important;
     border: 1px solid gainsboro;
-    margin-left: 3%;
-    margin-right: 3%;
+    /* margin-left: 3%;
+    margin-right: 3%; */
     color: whitesmoke;
 }
 
 .wbdv-course-topics .nav-link.active {
     background-color: cornflowerblue !important;
 }
+
+
 
 .wbdv-course-module {
     background: #403e3e;

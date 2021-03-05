@@ -14,16 +14,16 @@ const EditableItem = ({
             <>
             {
                 !editing &&
-                <div>
+                <>
                     {item.title}
                     <button className="btn btn-outline-dark float-right">
                             <i onClick={() => setEditing(true)} className="fas fa-edit"></i>
                     </button>
-                </div>
+                </>
             }
             {
                 editing &&
-                <div>
+                <>
                     <input
                         onChange={(e) => setItemCache({...itemCache, title: e.target.value})}
                         value={itemCache.title}/>
@@ -43,7 +43,7 @@ const EditableItem = ({
                             color: 'green'
                         }}></i>
                     </button>
-                </div>
+                </>
             }
         </>
     )

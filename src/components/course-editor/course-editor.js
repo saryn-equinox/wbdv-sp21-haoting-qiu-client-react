@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import "./course-editor.style.client.css";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {combineReducers, createStore} from "redux";
 import ModuleList from "./module-list";
+import LessonTab from "./lesson-tabs";
 import CourseService from "../../services/course-service";
 import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
@@ -19,16 +20,17 @@ const store = createStore(reducers);
 
 const CourseEditor = (props) => {
     const [courseService, setCourseSevice] = useState(new CourseService());
-    let [course, setCourse] = useState({});
+    const [course, setCourse] = useState({});
+    const {courseId, moduleId, lessonId} = useParams();
 
     // fetech the course to get the course title on first render
     useEffect(() => {
-        console.log(props.match)
         window.scrollTo(0, 0);
         courseService.findCourseById(props.match.params.courseId)
-            .then(data => {
+            .then(data => { 
                 setCourse(data);
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return(
@@ -78,14 +80,15 @@ const CourseEditor = (props) => {
         <div className="row wbdv-course-dashboard">
             <div className="col-3 mx-2">
                 <div className="list-group wbdv-course-module" role="tablist">
-                    <ModuleList 
-                        courseId={props.match.params.courseId}
-                        from={props.match.url} />
+                    <ModuleList />
                 </div>
             </div>
 
             <div className="col-8 mx-2">
-                <div className="row d-inline wbdv-course-topics">
+                <div className="row d-inline wbdv-course-lessons">
+                    <LessonTab />
+                </div>
+                {/* <div className="row d-inline wbdv-course-topics">
                     <ul className="nav nav-fill nav-pills">
                         <li className="nav-item">
                             <a className="nav-link" href="#" data-toggle="tab" role="tab">Topic 1</a>
@@ -105,7 +108,7 @@ const CourseEditor = (props) => {
                             <i className="fas fa-plus"></i>
                         </button>
                     </ul>
-                </div>
+                </div> */}
             </div>
         </div>
     </div>

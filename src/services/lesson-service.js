@@ -8,10 +8,11 @@ const LessonService = {
      * @param {object} lesson 
      */
     createLesson : (moduleId, lesson) => {
+        // console.log(lesson)
         return fetch(`${urlWithModuleId}/${moduleId}/lessons`, {
             method : "POST",
             headers : {
-                "content-type" : "applicatoin/json"
+                "content-type" : "application/json"
             },
             body : JSON.stringify(lesson)
         }).then(res => res.json());

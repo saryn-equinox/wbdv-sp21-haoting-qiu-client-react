@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import "./course-manager.style.client.css"
 import CourseTable from "../course-table/course-table"
+import CourseEditor from "../course-editor/course-editor"
 import CourseGrid from "../course-grid/course-grid"
 import CourseService from "../../services/course-service"
 import {Link, Switch, Route} from "react-router-dom"
@@ -97,6 +98,15 @@ const CourseManager = (props) => {
                     <CourseTable courses={courses} deleteCourse={deleteCourse} updateCourse={updateCourse} />
                 </Route>
             </Switch>
+            {/* <Route path={[
+                "/courses/edit",
+                "/courses/:layout/edit/:courseId",
+                "/courses/:layout/edit/:courseId/modules/:moduleId",
+                "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+                "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"
+                ]}
+                exact={true}
+                render={(props) => <CourseEditor {...props}/>} /> */}
         </div>
     )
 }
