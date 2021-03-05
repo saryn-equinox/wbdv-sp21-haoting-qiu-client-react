@@ -29,7 +29,7 @@ const CourseCard = (props) => {
                 {
                     !isEditing &&
                     <Link to={`/courses/grid/edit/${props.course._id}`}>
-                        <a className="btn mx-1 btn-primary">{courseTitle}</a>
+                        <button className="btn mx-1 btn-primary">{courseTitle}</button>
                     </Link>
                 }
                 {

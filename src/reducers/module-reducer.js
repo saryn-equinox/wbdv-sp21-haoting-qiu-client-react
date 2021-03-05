@@ -1,7 +1,4 @@
-import ModuleService from "../services/module-service"
-
 const initialState = {
-    moduleService : new ModuleService(),
     modules : []
 }
 

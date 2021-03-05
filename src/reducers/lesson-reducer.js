@@ -1,7 +1,4 @@
-import LessonService from "../services/lesson-service";
-
 const initialState = {
-    lessonService : new LessonService(),
     lessons : []
 }
 

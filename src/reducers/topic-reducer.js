@@ -1,11 +1,8 @@
-import TopicService from "../services/topic-service";
-
 const initialState = {
-    topicService : new TopicService(),
     topics : []
 }
 
-const topicsReducer = (state = initialState, action) => {
+const topicReducer = (state = initialState, action) => {
     switch(action.type) {
         case "FIND_TOPICS_FOR_LESSON":
             return {
@@ -35,4 +32,4 @@ const topicsReducer = (state = initialState, action) => {
     }
 }
 
-export default topicsReducer;
+export default topicReducer;

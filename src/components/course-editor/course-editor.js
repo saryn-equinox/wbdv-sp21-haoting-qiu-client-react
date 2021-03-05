@@ -1,10 +1,37 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import "./course-editor.style.client.css";
 import {Link} from "react-router-dom";
+import {combineReducers, createStore} from "redux";
+import ModuleList from "./module-list";
+import CourseService from "../../services/course-service";
+import moduleReducer from "../../reducers/module-reducer";
+import lessonReducer from "../../reducers/lesson-reducer";
+import topicReducer from "../../reducers/topic-reducer";
+import {Provider} from "react-redux";
+
+const reducers = combineReducers({
+    moduleReducer,
+    lessonReducer,
+    topicReducer
+});
+
+const store = createStore(reducers);
 
 const CourseEditor = (props) => {
-    
-    return(<div>
+    const [courseService, setCourseSevice] = useState(new CourseService());
+    let [course, setCourse] = useState({});
+
+    // fetech the course to get the course title on first render
+    useEffect(() => {
+        courseService.findCourseById(props.match.params.courseId)
+            .then(data => {
+                setCourse(data);
+            });
+    }, []);
+
+    return(
+    <Provider store={store}>
+    <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark sticky-top flex-fill">
             <span className="navbar-brand">
                     <Link to={`/courses/${props.match.params.layout}`}>
@@ -12,7 +39,7 @@ const CourseEditor = (props) => {
                         <i className="fas fa-times"></i>
                     </button>
                     </Link>
-                {`Yo`}
+                {course.title}
             </span>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbar-nav-dropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -49,53 +76,7 @@ const CourseEditor = (props) => {
         <div className="row wbdv-course-dashboard">
             <div className="col-3 mx-2">
                 <div className="list-group wbdv-course-module" role="tablist">
-                    <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                        Module 1
-                        <button className="btn pull-right btn-outline-dark float-right">
-                            <i className=" fa fa-trash"></i>
-                        </button>
-                    </a>
-                    <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                        Module 2
-                        <button className="btn pull-right btn-outline-dark float-right">
-                            <i className=" fa fa-trash"></i>
-                        </button>
-                    </a>
-                    <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                        Module 3
-                        <button className="btn pull-right btn-outline-dark float-right">
-                            <i className=" fa fa-trash"></i>
-                        </button>
-                    </a>
-                    <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                        Module 4
-                        <button className="btn pull-right btn-outline-dark float-right">
-                            <i className=" fa fa-trash"></i>
-                        </button>
-                    </a>
-                    <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                        Module 5
-                        <button className="btn pull-right btn-outline-dark float-right">
-                            <i className=" fa fa-trash"></i>
-                        </button>
-                    </a>
-                    <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                        Module 6
-                        <button className="btn pull-right btn-outline-dark float-right">
-                            <i className=" fa fa-trash"></i>
-                        </button>
-                    </a>
-                    <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                        Module 7
-                        <button className="btn pull-right btn-outline-dark float-right">
-                            <i className=" fa fa-trash"></i>
-                        </button>
-                    </a>
-                    <button
-                            className="btn btn-primary list-group-item list-group-item-action d-flex justify-content-end my-2"
-                            type="button">
-                        <i className="fas fa-plus"></i>
-                    </button>
+                    <ModuleList courseId={course._id} />
                 </div>
             </div>
 
@@ -123,7 +104,8 @@ const CourseEditor = (props) => {
                 </div>
             </div>
         </div>
-    </div>)
+    </div>
+    </Provider>)
 }
 
 // CourseEditor.defaultProps = {

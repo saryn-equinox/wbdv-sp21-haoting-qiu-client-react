@@ -13,7 +13,8 @@ function App() {
             "/courses/edit",
             "/courses/:layout/edit/:courseId",
             "/courses/:layout/edit/:courseId/modules/:moduleId",
-            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId"
+            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+            "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"
             ]}
             render={(props) => <CourseEditor {...props}/>} />
           <Route path="/courses/table">
