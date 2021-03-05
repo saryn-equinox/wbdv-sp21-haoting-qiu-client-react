@@ -17,7 +17,7 @@ const TopicPill = ({
         console.log(topics)
         if (lessonId !== "undefined" && typeof lessonId !== "undefined")
             findTopicsForLesson(lessonId);
-    }, [lessonId]);
+    }, [lessonId, moduleId, courseId]);
 
     return (<ul className="nav nav-fill nav-pills">
         {
