@@ -23,6 +23,8 @@ const CourseEditor = (props) => {
 
     // fetech the course to get the course title on first render
     useEffect(() => {
+        console.log(props.match)
+        window.scrollTo(0, 0);
         courseService.findCourseById(props.match.params.courseId)
             .then(data => {
                 setCourse(data);
@@ -76,7 +78,9 @@ const CourseEditor = (props) => {
         <div className="row wbdv-course-dashboard">
             <div className="col-3 mx-2">
                 <div className="list-group wbdv-course-module" role="tablist">
-                    <ModuleList courseId={course._id} />
+                    <ModuleList 
+                        courseId={props.match.params.courseId}
+                        from={props.match.url} />
                 </div>
             </div>
 

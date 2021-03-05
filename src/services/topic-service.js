@@ -1,5 +1,5 @@
-const urlWithLessonId = "https://wbdv-generic-server.herokuapp.com/api/001300329/lessons/";
-const urlWithTopicId = " https://wbdv-generic-server.herokuapp.com/api/001300329/topics/";
+const urlWithLessonId = "https://wbdv-generic-server.herokuapp.com/api/001300329/lessons";
+const urlWithTopicId = " https://wbdv-generic-server.herokuapp.com/api/001300329/topics";
 
 const TopicService = {
     /**

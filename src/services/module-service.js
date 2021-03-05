@@ -1,6 +1,6 @@
 //  https://wbdv-generic-server.herokuapp.com/api/YOUR_NEUID/modules/MODULE_ID
 const urlWithCourseId = "https://wbdv-generic-server.herokuapp.com/api/001300329/courses";
-const urlWithModuleId =  "https://wbdv-generic-server.herokuapp.com/api/001300329/modules/";
+const urlWithModuleId =  "https://wbdv-generic-server.herokuapp.com/api/001300329/modules";
 
 const ModuleService = {
 
@@ -13,7 +13,7 @@ const ModuleService = {
         return fetch(`${urlWithCourseId}/${courseId}/modules`, {
             method : "POST",
             headers : {
-                "content-tpye" : "application/json"
+                "content-type" : "application/json"
             },
             body : JSON.stringify(module)
         }).then(res => res.json());

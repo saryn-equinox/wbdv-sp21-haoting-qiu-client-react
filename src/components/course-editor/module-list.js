@@ -2,7 +2,10 @@ import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Link, useParams} from "react-router-dom";
 import ModuleService from "../../services/module-service";
+import EditableItem from "../editable-item";
+
 const ModuleList = ({
+    from,
     courseId,
     modules = [],
     findModulesForCourse,
@@ -12,55 +15,31 @@ const ModuleList = ({
 }) => {
     useEffect(() => {
         findModulesForCourse(courseId) 
+        console.log(modules)
     }, []);
 
     return (
         <div className="list-group wbdv-course-module" role="tablist">
-            <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                Module 1
-                <button className="btn pull-right btn-outline-dark float-right">
-                    <i className=" fa fa-trash"></i>
-                </button>
-            </a>
-            <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                Module 2
-                <button className="btn pull-right btn-outline-dark float-right">
-                    <i className=" fa fa-trash"></i>
-                </button>
-            </a>
-            <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                Module 3
-                <button className="btn pull-right btn-outline-dark float-right">
-                    <i className=" fa fa-trash"></i>
-                </button>
-            </a>
-            <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                Module 4
-                <button className="btn pull-right btn-outline-dark float-right">
-                    <i className=" fa fa-trash"></i>
-                </button>
-            </a>
-            <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                Module 5
-                <button className="btn pull-right btn-outline-dark float-right">
-                    <i className=" fa fa-trash"></i>
-                </button>
-            </a>
-            <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                Module 6
-                <button className="btn pull-right btn-outline-dark float-right">
-                    <i className=" fa fa-trash"></i>
-                </button>
-            </a>
-            <a className="list-group-item list-group-item-action rounded-0" data-toggle="list" role="tab">
-                Module 7
-                <button className="btn pull-right btn-outline-dark float-right">
-                    <i className=" fa fa-trash"></i>
-                </button>
-            </a>
+            {   
+                modules.map(m => 
+                    <Link className="list-group-item list-group-item-action rounded-0" 
+                        data-toggle="list" 
+                        role="tab"
+                        key={m._id}
+                        to={`${from}/modules/${m._id}`}>
+                        <EditableItem 
+                            to={`${from}/modules/${m._id}`}
+                            item={m}
+                            updateItem={updateModule}
+                            deleteItem={deleteModule}
+                        />
+                    </Link>
+                )
+            }
             <button
                     className="btn btn-primary list-group-item list-group-item-action d-flex justify-content-end my-2"
-                    type="button">
+                    type="button"
+                    onClick = {() => {createModule(courseId)}}>
                 <i className="fas fa-plus"></i>
             </button>
     </div>

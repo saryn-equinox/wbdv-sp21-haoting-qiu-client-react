@@ -11,40 +11,39 @@ const EditableItem = ({
     const [itemCache, setItemCache] = useState(item);
 
     return (
-        <>
+            <>
             {
                 !editing &&
-                <>
-                    <Link to={to}>
-                        {item.title}
-                    </Link>
-                    <button className="btn pull-right btn-outline-dark float-right">
+                <div>
+                    {item.title}
+                    <button className="btn btn-outline-dark float-right">
                             <i onClick={() => setEditing(true)} className="fas fa-edit"></i>
                     </button>
-                </>
+                </div>
             }
             {
                 editing &&
-                <>
+                <div>
                     <input
                         onChange={(e) => setItemCache({...itemCache, title: e.target.value})}
                         value={itemCache.title}/>
-
-                    <button className="btn pull-right btn-outline-dark float-right">
-                        <i onClick={() => {
-                            setEditing(false)
-                            updateItem(itemCache)
-                        }} className="fas fa-check" 
-                            style={{
-                            color: 'green'
-                        }}></i>
-                        <i onClick={() => deleteItem(item)} 
-                            className="fas fa-times"
+                    <button className="btn btn-outline-dark float-right">
+                        <i onClick={() => deleteItem(item)} className="fas fa-times"
                             style={{
                             color: 'red'
                         }}></i>
                     </button>
-                </>
+                    <button className="btn btn-outline-dark float-right">
+                        <i onClick={() => {
+                            setEditing(false);
+                            updateItem(itemCache);
+                            // console.log("Clicked!")
+                        }} className="fas fa-check" 
+                            style={{
+                            color: 'green'
+                        }}></i>
+                    </button>
+                </div>
             }
         </>
     )
