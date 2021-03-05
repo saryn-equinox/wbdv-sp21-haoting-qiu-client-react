@@ -17,7 +17,12 @@ const TopicPill = ({
         console.log(topics)
         if (lessonId !== "undefined" && typeof lessonId !== "undefined")
             findTopicsForLesson(lessonId);
-    }, [lessonId, moduleId, courseId]);
+    }, [lessonId]);
+
+    useEffect(() => {
+        if (lessonId !== "undefined" && typeof lessonId !== "undefined")
+            findTopicsForLesson(lessonId);
+    }, [moduleId]);
 
     return (<ul className="nav nav-fill nav-pills">
         {
