@@ -9,15 +9,26 @@ const LessonTab = ({
     findLessonsForModule,
     updateLesson,
     deleteLesson,
-    createLesson
+    createLesson,
+    resetLessons
 }) => {
     const {layout, courseId, moduleId, lessonId} = useParams();
 
     useEffect(() => {
-        console.log(lessons)
+        // console.log(lessons)
         if (moduleId !== "undefined" && typeof moduleId !== "undefined")
             findLessonsForModule(moduleId);
+        else
+            resetLessons([]);
     }, [moduleId]);
+
+    useEffect(() => {
+        // console.log(lessons)
+        if (moduleId !== "undefined" && typeof moduleId !== "undefined")
+            findLessonsForModule(moduleId);
+        else
+            resetLessons([]);
+    }, [courseId]);
 
     return (<ul className="nav nav-fill nav-pills">
         {
@@ -59,7 +70,7 @@ const dtpm = (dispatch) => {
         findLessonsForModule : (moduleId) => {
             LessonService.findLessonsForModule(moduleId)
             .then(lessons => {
-                console.log(lessons)
+                // console.log(lessons)
                 dispatch({
                     type : "FIND_LESSONS_FOR_MODULE",
                     lessons
@@ -95,6 +106,12 @@ const dtpm = (dispatch) => {
                 });
             } else
                 alert("Please select a module");
+        },
+        resetLessons : (lessons) => {
+            dispatch({
+                type : "FIND_LESSONS_FOR_MODULE",
+                lessons
+            });
         }
     }
 }

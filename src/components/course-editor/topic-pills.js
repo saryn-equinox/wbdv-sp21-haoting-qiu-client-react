@@ -9,19 +9,24 @@ const TopicPill = ({
     updateTopic,
     deleteTopic,
     createTopic,
-    findTopicsForLesson
+    findTopicsForLesson,
+    resetTopics
 }) => {
     const {layout, courseId, moduleId, lessonId, topicId} = useParams();
 
     useEffect(() => {
-        console.log(topics)
         if (lessonId !== "undefined" && typeof lessonId !== "undefined")
             findTopicsForLesson(lessonId);
+        else
+            resetTopics([]);
     }, [lessonId]);
 
     useEffect(() => {
+        console.log("called")
         if (lessonId !== "undefined" && typeof lessonId !== "undefined")
             findTopicsForLesson(lessonId);
+        else
+            resetTopics([]);
     }, [moduleId]);
 
     return (<ul className="nav nav-fill nav-pills">
@@ -99,6 +104,12 @@ const dtpm = (dispatch) => {
                 });
             } else
                 alert("Please select a lesson");
+        },
+        resetTopics : (topics) => {
+            dispatch({
+                type : "FIND_TOPICS_FOR_LESSON",
+                topics
+            });
         }
     }
 }
