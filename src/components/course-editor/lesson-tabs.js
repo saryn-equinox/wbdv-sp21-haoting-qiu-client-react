@@ -30,7 +30,7 @@ const LessonTab = ({
             resetLessons([]);
     }, [courseId]);
 
-    return (<ul className="nav nav-fill nav-pills">
+    return (<ul className="nav nav-fill nav-tabs">
         {
             lessons.map(l => 
                     <li className="nav-item" >
