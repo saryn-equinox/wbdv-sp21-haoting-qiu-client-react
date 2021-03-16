@@ -5,16 +5,19 @@ import {combineReducers, createStore} from "redux";
 import ModuleList from "./module-list";
 import LessonTab from "./lesson-tabs";
 import TopicPill from "./topic-pills";
+import WidgetList from "../widgets/widget-list";
 import CourseService from "../../services/course-service";
 import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
 import topicReducer from "../../reducers/topic-reducer";
+import widgetReducer from "../../reducers/widget-reducer";
 import {Provider} from "react-redux";
 
 const reducers = combineReducers({
     moduleReducer,
     lessonReducer,
-    topicReducer
+    topicReducer,
+    widgetReducer
 });
 
 const store = createStore(reducers);
@@ -36,7 +39,7 @@ const CourseEditor = (props) => {
 
     return(
     <Provider store={store}>
-    <div>
+    <>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark sticky-top flex-fill">
             <span className="navbar-brand">
                     <Link to={`/courses/${props.match.params.layout}`}>
@@ -80,9 +83,7 @@ const CourseEditor = (props) => {
         
         <div className="row wbdv-course-dashboard">
             <div className="col-3 mx-2">
-                <div className="list-group wbdv-course-module" role="tablist">
-                    <ModuleList />
-                </div>
+                <ModuleList />
             </div>
 
             <div className="col-8 mx-2">
@@ -92,30 +93,11 @@ const CourseEditor = (props) => {
                 <div className="row d-inline wbdv-course-topics">
                     <TopicPill />
                 </div>
-                {/* <div className="row d-inline wbdv-course-topics">
-                    <ul className="nav nav-fill nav-pills">
-                        <li className="nav-item">
-                            <a className="nav-link" href="#" data-toggle="tab" role="tab">Topic 1</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#" data-toggle="tab" role="tab">Topic 2</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#" data-toggle="tab" role="tab">Topic 3</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#" data-toggle="tab" role="tab">Topic 4</a>
-                        </li>
-                        <button
-                                className="btn btn-outline-dark justify-content-end"
-                                type="button">
-                            <i className="fas fa-plus"></i>
-                        </button>
-                    </ul>
-                </div> */}
+
+                <WidgetList />
             </div>
         </div>
-    </div>
+    </>
     </Provider>)
 }
 

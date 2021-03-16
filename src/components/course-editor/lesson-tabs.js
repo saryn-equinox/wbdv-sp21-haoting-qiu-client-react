@@ -33,11 +33,11 @@ const LessonTab = ({
     return (<ul className="nav nav-fill nav-tabs">
         {
             lessons.map(l => 
-                    <li className="nav-item" >
+                    <li className="nav-item" 
+                        key={l._id}>
                         <Link className="nav-link" 
                             data-toggle="tab" 
                             role="tab"
-                            key={l._id}
                             to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${l._id}`}
                             >
                             <EditableItem
@@ -50,12 +50,9 @@ const LessonTab = ({
                     </li>
             )
         }
-        <button
-                className="btn btn-outline-dark "
-                type="button"
-                onClick = {() => {createLesson(moduleId)}}>
-            <i className="fas fa-plus"></i>
-        </button>
+
+        <i className="btn btn-outline-dark fas fa-plus"
+                onClick = {() => {createLesson(moduleId)}}></i>
     </ul>)
 }
 

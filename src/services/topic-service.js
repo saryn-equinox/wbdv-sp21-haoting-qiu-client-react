@@ -59,4 +59,4 @@ const TopicService = {
     }
 }
 
-export default TopicService
+export default TopicService;

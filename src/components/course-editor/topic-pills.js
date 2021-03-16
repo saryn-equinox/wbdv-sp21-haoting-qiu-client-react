@@ -22,7 +22,6 @@ const TopicPill = ({
     }, [lessonId]);
 
     useEffect(() => {
-        console.log("called")
         if (lessonId !== "undefined" && typeof lessonId !== "undefined")
             findTopicsForLesson(lessonId);
         else
@@ -32,11 +31,12 @@ const TopicPill = ({
     return (<ul className="nav nav-fill nav-pills">
         {
             topics.map(t => 
-                    <li className="nav-item" >
+                    <li className="nav-item" 
+                        key={t._id}>
                         <Link className="nav-link" 
                             data-toggle="tab" 
                             role="tab"
-                            key={t._id}
+                            
                             to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${t._id}`}
                             >
                             <EditableItem
@@ -49,12 +49,15 @@ const TopicPill = ({
                     </li>
             )
         }
-        <button
+        {/* <button
                 className="btn btn-outline-dark "
                 type="button"
                 onClick = {() => {createTopic(lessonId)}}>
             <i className="fas fa-plus"></i>
-        </button>
+        
+        </button> */}
+        <i className="btn btn-outline-dark fas fa-plus"
+                onClick = {() => {createTopic(lessonId)}}></i>
     </ul>)
 }
 
