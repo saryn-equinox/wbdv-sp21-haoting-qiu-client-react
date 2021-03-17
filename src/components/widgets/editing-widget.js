@@ -14,7 +14,8 @@ const EditingWidget = ({
                 <select className="form-control"
                         onChange={(e) => {
                             setWidgetCache({...widgetCache, type: e.target.value})
-                        }}>
+                        }}
+                        value={widgetCache["type"]}>
                     <option>Heading</option>
                     <option>Paragraph</option>
                 </select>
