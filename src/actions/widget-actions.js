@@ -6,7 +6,7 @@ const DELETE_WIDGET = "DELETE_WIDGET";
 const UPDATE_WIDGET = "UPDATE_WIDGET";
 
 const createWidget = (dispatch, tid) => {
-    WidgetService.createWidget(tid, {type : "Heading", size: 1, text : "Hello, World"})
+    WidgetService.createWidget(tid, {type : "HEADING", size: 1, text : "Hello, World"})
     .then(widget => {
         dispatch({
             type : CREATE_WIDGET,

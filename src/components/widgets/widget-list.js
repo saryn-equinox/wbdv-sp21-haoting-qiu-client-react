@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import ParagraphWidget from "./paragraph-widget";
 import HeadingWidget from "./heading-widget";
+import ImageWidget from "./image-widget";
 import {useParams} from "react-router-dom";
 import widgetActions from "../../actions/widget-actions";
  
@@ -13,6 +14,10 @@ const WidgetList = ({
     findWidgetsForTopic,
     resetWidgets
 }) => {
+    const IMAGE = "IMAGE";
+    const HEADING = "HEADING";
+    const LIST = "LIST";
+    const PARAGRAPH = "PARAGRAPH";    
     const {layout, courseId, moduleId, lessonId, topicId} = useParams();
 
     useEffect(() => {
@@ -39,17 +44,20 @@ const WidgetList = ({
             <ul className="list-group">
                 {
                     widgets.map(w => {
+                        console.log(w["type"]);
                         return <li className="list-group-item" key={w.id}>
                         {
-                            w["type"] === "Paragraph" &&
+                            w["type"] === "PARAGRAPH" &&
                                 <ParagraphWidget widget={w} updateWidget={updateWidget} deleteWidget={deleteWidget} />
                         }
                         {   
-                            
-                            w["type"] === "Heading" &&
+                            w["type"] === "HEADING" &&
                                 <HeadingWidget widget={w} updateWidget={updateWidget} deleteWidget={deleteWidget} />
                         }
-                        
+                        {    
+                            w["type"] === "IMAGE" &&
+                                <ImageWidget widget={w} updateWidget={updateWidget} deleteWidget={deleteWidget} />
+                        }                        
                         </li>
                     })
                 }
