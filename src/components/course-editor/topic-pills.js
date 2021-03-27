@@ -33,7 +33,7 @@ const TopicPill = ({
             topics.map(t => 
                     <li className="nav-item" 
                         key={t._id}>
-                        <Link className="nav-link" 
+                        <Link className={`nav-link ${topicId === t._id ? "active" : ""}`}
                             data-toggle="tab" 
                             role="tab"
                             

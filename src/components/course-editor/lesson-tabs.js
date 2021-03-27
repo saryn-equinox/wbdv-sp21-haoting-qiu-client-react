@@ -33,9 +33,9 @@ const LessonTab = ({
     return (<ul className="nav nav-fill nav-tabs">
         {
             lessons.map(l => 
-                    <li className="nav-item" 
+                    <li className={`nav-item ${lessonId === l._id ? "active" : ""}`}
                         key={l._id}>
-                        <Link className="nav-link" 
+                        <Link className={`nav-link ${lessonId === l._id ? "active" : ""} `}
                             data-toggle="tab" 
                             role="tab"
                             to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${l._id}`}

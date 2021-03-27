@@ -20,7 +20,7 @@ const ModuleList = ({
         <div className="list-group wbdv-course-module" role="tablist">
             {   
                 modules.map(m => 
-                    <Link className="list-group-item list-group-item-action rounded-0" 
+                    <Link className={`list-group-item list-group-item-action rounded-0 ${moduleId === m._id ? "active" : ""}`}
                         data-toggle="list" 
                         role="tab"
                         key={m._id}
