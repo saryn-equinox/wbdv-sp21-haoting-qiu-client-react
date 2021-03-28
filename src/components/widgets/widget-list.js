@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import ParagraphWidget from "./paragraph-widget";
 import HeadingWidget from "./heading-widget";
 import ImageWidget from "./image-widget";
+import ListWidget from "./list-widget";
 import {useParams} from "react-router-dom";
 import widgetActions from "../../actions/widget-actions";
  
@@ -57,7 +58,11 @@ const WidgetList = ({
                         {    
                             w["type"] === "IMAGE" &&
                                 <ImageWidget widget={w} updateWidget={updateWidget} deleteWidget={deleteWidget} />
-                        }                        
+                        }
+                        {    
+                            w["type"] === LIST &&
+                                <ListWidget widget={w} updateWidget={updateWidget} deleteWidget={deleteWidget} />
+                        }                                                 
                         </li>
                     })
                 }

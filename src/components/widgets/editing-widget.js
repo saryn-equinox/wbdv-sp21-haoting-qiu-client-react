@@ -13,6 +13,11 @@ const EditingWidget = ({
     const PARAGRAPH = "PARAGRAPH";
     const [widgetCache, setWidgetCache] = useState(widget);
 
+    useEffect(() => {
+        if (widgetCache["type"] === LIST)
+            setWidgetCache({...widgetCache, value: "unordered"});
+    }, []);
+
     return (<div className="row">
             <div className="col">
                 <select className="form-control"
@@ -76,8 +81,25 @@ const EditingWidget = ({
                             setWidgetCache({...widgetCache, height: e.target.value})
                         }} />                                                
                     </>
-                }                     
-
+                }      
+                {
+                    widgetCache.type === LIST &&
+                    <>  
+                        <input type="checkbox" 
+                                id="order_check_box"  
+                                value="ordered"
+                                onChange={(e) => {
+                                    setWidgetCache({...widgetCache, value: e.target.value})
+                                }} />
+                        <label for="order_check_box">Ordered</label>
+                        <div>{`Separate item by new line`}</div>
+                        <textarea className="form-control"
+                        value={widgetCache.text}
+                        onChange={(e) => {
+                            setWidgetCache({...widgetCache, text: e.target.value})
+                        }} />                                               
+                    </>
+                }                                
             </div>
             <div className="col">
                 <i className="btn btn-outline-dark float-right fas fa-times"
