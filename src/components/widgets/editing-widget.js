@@ -15,7 +15,7 @@ const EditingWidget = ({
 
     useEffect(() => {
         if (widgetCache["type"] === LIST)
-            setWidgetCache({...widgetCache, value: "unordered"});
+            setWidgetCache({...widgetCache, ordered: false});
     }, []);
 
     return (<div className="row">
@@ -89,7 +89,7 @@ const EditingWidget = ({
                                 id="order_check_box"  
                                 value="ordered"
                                 onChange={(e) => {
-                                    setWidgetCache({...widgetCache, value: e.target.value})
+                                    setWidgetCache({...widgetCache, ordered: !widgetCache['ordered']})
                                 }} />
                         <label for="order_check_box">Ordered</label>
                         <div>{`Separate item by new line`}</div>
