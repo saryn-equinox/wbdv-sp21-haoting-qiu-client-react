@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/api";
+const URL = "http://quiet-dawn-69062.herokuapp.com/api";
 
 const WidgetService = {
     /**
