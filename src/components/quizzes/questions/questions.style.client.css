@@ -1,0 +1,15 @@
+.selected {
+    background-color: rgb(238, 144, 144) !important;
+}
+
+.correct {
+    background-color: rgb(145, 238, 145) !important;
+}
+
+.fa-check {
+    color: rgb(145, 238, 145);
+}
+
+.fa-times {
+    color: rgb(238, 144, 144);
+}
