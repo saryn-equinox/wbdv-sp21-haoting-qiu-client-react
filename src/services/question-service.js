@@ -1,4 +1,4 @@
-const QUIZZES_URL = 'http://localhost:3000/api/quizzes';
+const QUIZZES_URL = 'https://course-managment-server-node.herokuapp.com/api/quizzes';
 
 const QuestionService = {
     findQuestionsForQuiz : (qid) => {

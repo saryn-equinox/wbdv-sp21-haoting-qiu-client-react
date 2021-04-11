@@ -17,7 +17,7 @@ const Quiz = () => {
     
     const submitQuiz = () => {
         console.log(questions)
-        return fetch(`http://localhost:3000/api/quizzes/${quizId}/attempts`, 
+        return fetch(`https://course-managment-server-node.herokuapp.com/api/quizzes/${quizId}/attempts`, 
             {
                 method: 'POST',
                 body: JSON.stringify(questions), 
