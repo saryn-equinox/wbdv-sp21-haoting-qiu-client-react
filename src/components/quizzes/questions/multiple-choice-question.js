@@ -23,7 +23,7 @@ const MultipleChoiceQuestion = ({
                                     value={choice}
                                     onClick={() => {
                                         setAnswer(choice)
-                                        question.answer = answer
+                                        question.answer = choice
                                         }}
                                     />
                                 {choice}

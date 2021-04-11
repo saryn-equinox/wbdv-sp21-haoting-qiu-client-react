@@ -16,7 +16,7 @@ const TrueFalseQuestion = ({
                             type="radio"
                             onClick={() => {
                                 setAnswer("true")
-                                question.answer = answer
+                                question.answer = "true"
                             }}
                             name={question._id}
                             value="true"/>
@@ -30,7 +30,7 @@ const TrueFalseQuestion = ({
                             type="radio"
                             onClick={() => {
                                 setAnswer("false")
-                                question.answer = answer
+                                question.answer = "false"
                             }}
                             name={question._id}
                             value="false"/>
