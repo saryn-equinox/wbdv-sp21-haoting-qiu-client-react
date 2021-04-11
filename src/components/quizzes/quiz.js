@@ -46,7 +46,7 @@ const Quiz = () => {
                 type="button" 
                 className="btn btn-success float-left"
                 onClick={() => submitQuiz()}>
-                Grade
+                Submit
             </button>     
         </div>
     );
