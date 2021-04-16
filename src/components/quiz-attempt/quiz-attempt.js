@@ -18,14 +18,16 @@ const QuizAttempts = () => {
         <tr>
             <th scope="col">Attempts</th>
             <th scope="col">Score</th>
+            <th scope="col">QuizId</th>
         </tr>
         </thead>
         <tbody>
             {
-                attempts.map((attemp, idx) => {
+                attempts.map((a, idx) => {
                     return (<tr>
                         <th scope="row">{idx + 1}</th>
-                        <td>{attemp.score}</td>
+                        <td>{a.score}</td>
+                        <td>{[a.quiz._id]}</td>
                     </tr>)
                 })
             }

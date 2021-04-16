@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import Question from "./questions/question";
 import QuestionService from "../../services/question-service";
 
@@ -48,7 +48,16 @@ const Quiz = () => {
                 className="btn btn-success float-left"
                 onClick={() => submitQuiz()}>
                 Submit
-            </button>     
+            </button>
+            
+            <Link
+            to={`/courses/${courseId}/quizzes/${quizId}/attempts`}>
+            <button 
+                type="button" 
+                className="btn btn-primary float-left">
+                Show Attempts
+            </button> 
+            </Link>     
         </div>
     );
 }
