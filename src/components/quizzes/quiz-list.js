@@ -21,12 +21,21 @@ const Quizzes = (props) => {
                 {
                     quizzes.map((quiz) => {
                         return(
-                            <Link
-                                to={`/courses/${courseId}/quizzes/${quiz._id}`}
+                            <div
                                 className="list-group-item"
-                                key={quiz._id}>
+                                key={quiz._id}
+                            >
+                            <Link
+                                to={`/courses/${courseId}/quizzes/${quiz._id}`}>
                                 {quiz.title}
                             </Link>
+                            <br></br>
+                            <Link
+                                to={`/courses/${courseId}/quizzes/${quiz._id}/attempts`}
+                            >
+                                Attempts
+                            </Link>
+                            </div>
                         )
                     })
                 }

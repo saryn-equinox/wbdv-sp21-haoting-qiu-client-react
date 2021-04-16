@@ -3,16 +3,16 @@ import TrueFalseQuestion from "./true-false-question";
 import MultipleChoiceQuestion from "./multiple-choice-question";
 import "./questions.style.client.css";
 
-const Question = ({question, quizId}) => {
+const Question = ({question, quizId, submitted}) => {
     const [answer, setAnswer] = useState(null) // temp answer
-    const [submitted, setSubmitted] = useState(null) // answer for graded
+    const [graded, setGraded] = useState(null) // answer for graded
 
     return(
         <div>
             <h4>
                 {question.question} &nbsp; 
                 {
-                    submitted !== null &&
+                    submitted !== undefined &&   
                     <span>
                     {
                         submitted === question.correct &&
@@ -32,8 +32,9 @@ const Question = ({question, quizId}) => {
                     question={question}
                     answer={answer}
                     setAnswer={setAnswer}
+                    graded={graded}
+                    setGraded={setGraded}
                     submitted={submitted}
-                    setSubmitted={setSubmitted}
                     />
             }
             {
@@ -42,8 +43,9 @@ const Question = ({question, quizId}) => {
                     question={question}
                     answer={answer}
                     setAnswer={setAnswer}
+                    graded={graded}
+                    setGraded={setGraded}
                     submitted={submitted}
-                    setSubmitted={setSubmitted}
                     />
             }
             <br/>
@@ -51,7 +53,7 @@ const Question = ({question, quizId}) => {
                 Your Answer: 
             </span>
             {
-                submitted &&
+                submitted !== undefined &&
                 <span>
                     {submitted}
                 </span>
@@ -60,8 +62,9 @@ const Question = ({question, quizId}) => {
             <button 
                 type="button" 
                 className="btn btn-success float-left"
-                onClick={() => setSubmitted(answer)}>
-                Grade
+                disabled
+                onClick={() => setGraded(answer)}>
+                Grade  (A7 feature, deprecated for A8, use Submit instead)
             </button>                    
         </div>
     )

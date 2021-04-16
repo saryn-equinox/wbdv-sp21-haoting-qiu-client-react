@@ -6,6 +6,7 @@ import QuestionService from "../../services/question-service";
 const Quiz = () => {
     const {courseId, quizId} = useParams();
     const [questions, setQuestions] = useState([]);
+    const [submission, setSubmission] = useState([]) // answer for graded
     
     useEffect(() => {
         if (courseId !== "undefined" && typeof courseId !== "undefined") {
@@ -16,7 +17,8 @@ const Quiz = () => {
 
     
     const submitQuiz = () => {
-        console.log(questions)
+        // console.log(questions)
+        setSubmission(questions.map(q => q["answer"]))
         return fetch(`https://course-managment-server-node.herokuapp.com/api/quizzes/${quizId}/attempts`, 
             {
                 method: 'POST',
@@ -33,12 +35,11 @@ const Quiz = () => {
             <h2>Quiz {quizId}</h2>
             <ul class="list-group">
                 {
-                    questions.map(question =>
+                    questions.map((question, idx) =>
                     <li class="list-group-item"
                         key={question._id}>
-                        <Question question={question} quizId={quizId}/>
-                    </li>
-                    )
+                        <Question question={question} quizId={quizId} submitted={submission[idx]}/>
+                    </li>)
                 }
             </ul>
             <br/>

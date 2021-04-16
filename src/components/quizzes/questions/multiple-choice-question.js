@@ -4,8 +4,9 @@ const MultipleChoiceQuestion = ({
     question, 
     answer, 
     setAnswer,
-    submitted,
-    setSubmitted}) => {
+    graded,
+    setGraded,
+    submitted}) => {
 
     return(
             <ul class="list-group">
@@ -14,8 +15,8 @@ const MultipleChoiceQuestion = ({
                     return(
                             <li className={`
                             list-group-item
-                            ${(submitted !== null && submitted === choice) ? "selected" : ""}
-                            ${(question.correct === choice && submitted !== null) ? "correct" : ""}                            
+                            ${(submitted !== undefined && submitted === choice) ? "selected" : ""}
+                            ${(question.correct === choice && submitted !== undefined) ? "correct" : ""}                            
                             `}
                             key={idx}>
                                 <input type="radio"

@@ -2,6 +2,7 @@ import CourseManager from "./components/course-manager/course-manager"
 import CourseEditor from "./components/course-editor/course-editor"
 import Quizzes from "./components/quizzes/quiz-list"
 import Quiz from "./components/quizzes/quiz"
+import QuizAttempts from "./components/quiz-attempt/quiz-attempt"
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Home from "./components/home"
 import './App.css';
@@ -31,6 +32,9 @@ function App() {
 				</Route>
 				<Route path="/courses/:courseId/quizzes/:quizId" exact={true}>
 					<Quiz />
+				</Route>
+				<Route path="/courses/:courseId/quizzes/:quizId/attempts" exact={true}>
+					<QuizAttempts />
 				</Route>				
 				<Route path="/">
 					<Home />
